@@ -1,11 +1,14 @@
-#!/usr/bin/env node
+nst {
+  Option,
+  program
+} = require('commander');
+//#!/usr/bin/env node
 //
 // Parses an assembly definitions file and outputs an SVG.
 //
 // Usage: assembly-diagrams ASSEMBLY_SCRIPT [STROKE_WIDTH] [CSS_FILE]
 //
 const fs = require('fs')
-const { program } = require('commander')
 const { version } = require('./package.json')
 const parse = require('./src/parse')
 const Assembly = require('./src/Assembly')
@@ -13,8 +16,8 @@ const Assembly = require('./src/Assembly')
 program.version(version)
 program
   .argument('<script>', 'Assembly script')
-  .option('-s, --stroke-width <width>', 'Border stroke width', '20')
-  .option('-c, --css <stylesheet>', 'Stylesheet', `${__dirname}/src/assembly.css`)
+  .addOption(new Option('-s, --stroke-width <width>', 'Border stroke width').preset('20'))
+  .addOption(new Option('-c, --css <stylesheet>', 'Stylesheet').preset(`${__dirname}/src/assembly.css`))
 program.parse(process.argv)
 const options = program.opts()
 
