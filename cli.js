@@ -13,8 +13,8 @@ const Assembly = require('./src/Assembly')
 program.version(version)
 program
   .argument('<script>', 'Assembly script')
-  .option('-s, --stroke-width <width>', 'Border stroke width', '20')
-  .option('-c, --css <stylesheet>', 'Stylesheet', `${__dirname}/src/assembly.css`)
+  .option('-s, --stroke-width <width>','Border stroke width').preset('20')
+  .option('-c, --css <stylesheet>','Stylesheet').preset(`${__dirname}/src/assembly.css`)
 program.parse(process.argv)
 const options = program.opts()
 
